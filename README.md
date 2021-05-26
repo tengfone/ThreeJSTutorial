@@ -4,6 +4,8 @@ Resources:
 - [Bruno Simon](https://threejs-journey.xyz/)
 
 Deployed On:
-[![Deploy with Vercel](https://tf-3js-test.vercel.app/)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fhello-world)
+<img alt="Vercel" src="https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white"/>
+
+<a href="https://tf-3js-test.vercel.app/"><img alt="Vercel" src="https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white"/></a>
 
 Lesson 6
