@@ -24,7 +24,7 @@ module.exports = {
         }),
         new MiniCSSExtractPlugin(),
         new HtmlWebpackPlugin({
-            favicon: "./static/favicons/favicon.ico"
+            favicon: "/favicon.ico"
         })
     ],
     module:
