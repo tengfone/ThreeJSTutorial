@@ -18,48 +18,44 @@ const scene = new THREE.Scene()
 /**
  * Lights
  */
+// Ambient light
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.5)
+gui.add(ambientLight, 'intensity').min(0).max(1).step(0.001)
 scene.add(ambientLight)
 
-const pointLight = new THREE.PointLight(0xffffff, 0.5)
-pointLight.position.x = 2
-pointLight.position.y = 3
-pointLight.position.z = 4
-scene.add(pointLight)
+// Directional light
+const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5)
+directionalLight.position.set(2, 2, - 1)
+gui.add(directionalLight, 'intensity').min(0).max(1).step(0.001)
+gui.add(directionalLight.position, 'x').min(- 5).max(5).step(0.001)
+gui.add(directionalLight.position, 'y').min(- 5).max(5).step(0.001)
+gui.add(directionalLight.position, 'z').min(- 5).max(5).step(0.001)
+scene.add(directionalLight)
+
+/**
+ * Materials
+ */
+const material = new THREE.MeshStandardMaterial()
+material.roughness = 0.7
+gui.add(material, 'metalness').min(0).max(1).step(0.001)
+gui.add(material, 'roughness').min(0).max(1).step(0.001)
 
 /**
  * Objects
  */
-// Material
-const material = new THREE.MeshStandardMaterial()
-material.roughness = 0.4
-
-// Objects
 const sphere = new THREE.Mesh(
     new THREE.SphereBufferGeometry(0.5, 32, 32),
     material
 )
-sphere.position.x = - 1.5
-
-const cube = new THREE.Mesh(
-    new THREE.BoxBufferGeometry(0.75, 0.75, 0.75),
-    material
-)
-
-const torus = new THREE.Mesh(
-    new THREE.TorusBufferGeometry(0.3, 0.2, 32, 64),
-    material
-)
-torus.position.x = 1.5
 
 const plane = new THREE.Mesh(
     new THREE.PlaneBufferGeometry(5, 5),
     material
 )
 plane.rotation.x = - Math.PI * 0.5
-plane.position.y = - 0.65
+plane.position.y = - 0.5
 
-scene.add(sphere, cube, torus, plane)
+scene.add(sphere, plane)
 
 /**
  * Sizes
@@ -115,15 +111,6 @@ const clock = new THREE.Clock()
 const tick = () =>
 {
     const elapsedTime = clock.getElapsedTime()
-
-    // Update objects
-    sphere.rotation.y = 0.1 * elapsedTime
-    cube.rotation.y = 0.1 * elapsedTime
-    torus.rotation.y = 0.1 * elapsedTime
-
-    sphere.rotation.x = 0.15 * elapsedTime
-    cube.rotation.x = 0.15 * elapsedTime
-    torus.rotation.x = 0.15 * elapsedTime
 
     // Update controls
     controls.update()
