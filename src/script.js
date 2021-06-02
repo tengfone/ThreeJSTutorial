@@ -16,11 +16,6 @@ const canvas = document.querySelector('canvas.webgl')
 const scene = new THREE.Scene()
 
 /**
- * Textures
- */
-const textureLoader = new THREE.TextureLoader()
-
-/**
  * Test cube
  */
 const cube = new THREE.Mesh(
@@ -57,6 +52,8 @@ window.addEventListener('resize', () =>
  */
 // Base camera
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
+camera.position.x = 3
+camera.position.y = 3
 camera.position.z = 3
 scene.add(camera)
 
