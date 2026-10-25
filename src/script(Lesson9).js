@@ -1,6 +1,6 @@
 import './style.css'
 import * as THREE from 'three'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 import { PositionalAudio } from 'three'
 
 /**
@@ -44,7 +44,7 @@ const scene = new THREE.Scene()
 //     ))
 // }
 
-// const geometry = new THREE.BoxBufferGeometry(1,1,1,2,2)
+// const geometry = new THREE.BoxGeometry(1,1,1,2,2)
 
 const geometry = new THREE.BufferGeometry()
 

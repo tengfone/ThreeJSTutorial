@@ -1,6 +1,6 @@
 import './style.css'
 import * as THREE from 'three'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 
 // Textures
 const loadingManager = new THREE.LoadingManager()
@@ -56,7 +56,7 @@ const scene = new THREE.Scene()
 /**
  * Object
  */
-const geometry = new THREE.BoxBufferGeometry(1, 1, 1)
+const geometry = new THREE.BoxGeometry(1, 1, 1)
 const material = new THREE.MeshBasicMaterial({ map: colorTexture})
 const mesh = new THREE.Mesh(geometry, material)
 scene.add(mesh)

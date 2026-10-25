@@ -1,11 +1,11 @@
 import './style.css'
 import * as THREE from 'three'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 import gsap from 'gsap'
-import * as dat from 'dat.gui'
+import GUI from 'lil-gui'
 
 // DEBUG GUI
-const gui = new dat.GUI()
+const gui = new GUI()
 const parameters = {
     color: 0xff0000,
     spin: () => {
@@ -31,7 +31,7 @@ const scene = new THREE.Scene()
 /**
  * Object
  */
-const geometry = new THREE.BoxBufferGeometry(1, 1, 1)
+const geometry = new THREE.BoxGeometry(1, 1, 1)
 const material = new THREE.MeshBasicMaterial({ color: parameters.color })
 const mesh = new THREE.Mesh(geometry, material)
 scene.add(mesh)
