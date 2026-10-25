@@ -1,13 +1,13 @@
 import './style.css'
 import * as THREE from 'three'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import * as dat from 'dat.gui'
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
+import GUI from 'lil-gui'
 
 /**
  * Base
  */
 // Debug
-const gui = new dat.GUI()
+const gui = new GUI()
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
@@ -25,7 +25,7 @@ const particleTexture = textureLoader.load('/textures/particles/11.png')
  * Particle
  */
 // Geometry
-const particlesGeometry = new THREE.SphereBufferGeometry(1, 32, 32)
+const particlesGeometry = new THREE.SphereGeometry(1, 32, 32)
 const customparticlesGeometry = new THREE.BufferGeometry()
 const count = 20000
 
@@ -69,7 +69,7 @@ scene.add(particles)
 
 // Cube
 const cube = new THREE.Mesh(
-    new THREE.BoxBufferGeometry(),
+    new THREE.BoxGeometry(),
     new THREE.MeshBasicMaterial()
 )
 // scene.add(cube)

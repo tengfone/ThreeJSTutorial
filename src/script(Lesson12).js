@@ -1,8 +1,8 @@
 import './style.css'
 import * as THREE from 'three'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 import { MeshMatcapMaterial } from 'three'
-import * as dat from 'dat.gui'
+import GUI from 'lil-gui'
 
 /**
  * Base
@@ -51,7 +51,7 @@ material.aoMapIntensity = 1
 material.displacementMap = doorHeightTexture
 material.displacementScale = 0.05
 
-const gui = new dat.GUI()
+const gui = new GUI()
 gui.add(material,'metalness').min(0).max(1).step(0.0001)
 gui.add(material,'roughness').min(0).max(1).step(0.0001)
 gui.add(material, 'aoMapIntensity').min(0).max(1).step(0.0001)
@@ -66,21 +66,21 @@ pointLight.position.y = 3
 pointLight.position.z = 4
 scene.add(pointLight)
 
-const sphere = new THREE.Mesh(new THREE.SphereBufferGeometry(0.5,64,64),
+const sphere = new THREE.Mesh(new THREE.SphereGeometry(0.5,64,64),
     material
 )
 
 sphere.position.x = -1.5
 
 const plane = new THREE.Mesh(
-    new THREE.PlaneBufferGeometry(1,1,100,100),
+    new THREE.PlaneGeometry(1,1,100,100),
     material
 )
 
 plane.geometry.setAttribute('uv2', new THREE.BufferAttribute(plane.geometry.attributes.uv.array, 2))
 
 const torus = new THREE.Mesh(
-    new THREE.TorusBufferGeometry(0.3,0.2,64,128),
+    new THREE.TorusGeometry(0.3,0.2,64,128),
     material
 )
 

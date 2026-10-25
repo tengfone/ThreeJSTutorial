@@ -1,6 +1,8 @@
 import './style.css'
 import * as THREE from 'three'
 import { Mesh } from 'three';
+import { FontLoader } from 'three/addons/loaders/FontLoader.js'
+import { TextGeometry } from 'three/addons/geometries/TextGeometry.js'
 
 /**
  * Base
@@ -29,14 +31,14 @@ textureLoader.load('/space.jpg', function (texture) {
 });
 
 // Fonts
-const fontLoader = new THREE.FontLoader()
+const fontLoader = new FontLoader()
 fontLoader.load('/fonts/Ubuntu_Bold.json', (font) => {
-    const textGeometry = new THREE.TextBufferGeometry(
+    const textGeometry = new TextGeometry(
         "Teng Fone's\nPortfolio\nClick Me!",
         {
             font: font,
             size: 0.5,
-            height: 0.2,
+            depth: 0.2,
             curveSegments: 5,
             bevelEnabled: true,
             bevelThickness: 0.03,

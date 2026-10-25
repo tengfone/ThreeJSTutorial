@@ -1,7 +1,7 @@
 import './style.css'
 import * as THREE from 'three'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import * as dat from 'dat.gui'
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
+import GUI from 'lil-gui'
 
 // TEXTURE BAKING SHADOW
 const textureLoader = new THREE.TextureLoader()
@@ -12,7 +12,7 @@ const simpleShadow = textureLoader.load('/textures/simpleShadow.jpg')
  * Base
  */
 // Debug
-const gui = new dat.GUI()
+const gui = new GUI()
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
@@ -65,13 +65,13 @@ gui.add(material, 'roughness').min(0).max(1).step(0.001)
  * Objects
  */
 const sphere = new THREE.Mesh(
-    new THREE.SphereBufferGeometry(0.5, 32, 32),
+    new THREE.SphereGeometry(0.5, 32, 32),
     material
 )
 sphere.castShadow = true
 
 const plane = new THREE.Mesh(
-    new THREE.PlaneBufferGeometry(5, 5),
+    new THREE.PlaneGeometry(5, 5),
     material
 )
 plane.rotation.x = - Math.PI * 0.5
@@ -81,7 +81,7 @@ plane.receiveShadow = true
 
 // Plane for shadow baking
 const sphereShadow = new THREE.Mesh(
-    new THREE.PlaneBufferGeometry(1.5, 1.5),
+    new THREE.PlaneGeometry(1.5, 1.5),
     new THREE.MeshBasicMaterial({
         color: 0x000000,
         transparent: true,

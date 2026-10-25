@@ -1,14 +1,14 @@
 import './style.css'
 import * as THREE from 'three'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import * as dat from 'dat.gui'
-import {RectAreaLightHelper} from 'three/examples/jsm/helpers/RectAreaLightHelper'
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
+import GUI from 'lil-gui'
+import {RectAreaLightHelper} from 'three/addons/helpers/RectAreaLightHelper.js'
 
 /**
  * Base
  */
 // Debug
-const gui = new dat.GUI()
+const gui = new GUI()
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
@@ -88,24 +88,24 @@ material.roughness = 0.4
 
 // Objects
 const sphere = new THREE.Mesh(
-    new THREE.SphereBufferGeometry(0.5, 32, 32),
+    new THREE.SphereGeometry(0.5, 32, 32),
     material
 )
 sphere.position.x = - 1.5
 
 const cube = new THREE.Mesh(
-    new THREE.BoxBufferGeometry(0.75, 0.75, 0.75),
+    new THREE.BoxGeometry(0.75, 0.75, 0.75),
     material
 )
 
 const torus = new THREE.Mesh(
-    new THREE.TorusBufferGeometry(0.3, 0.2, 32, 64),
+    new THREE.TorusGeometry(0.3, 0.2, 32, 64),
     material
 )
 torus.position.x = 1.5
 
 const plane = new THREE.Mesh(
-    new THREE.PlaneBufferGeometry(5, 5),
+    new THREE.PlaneGeometry(5, 5),
     material
 )
 plane.rotation.x = - Math.PI * 0.5

@@ -1,13 +1,13 @@
 import './style.css'
 import * as THREE from 'three'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import * as dat from 'dat.gui'
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
+import GUI from 'lil-gui'
 
 /**
  * Base
  */
 // Debug
-const gui = new dat.GUI()
+const gui = new GUI()
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
@@ -19,7 +19,7 @@ const scene = new THREE.Scene()
  * Test cube
  */
 const cube = new THREE.Mesh(
-    new THREE.BoxBufferGeometry(1, 1, 1),
+    new THREE.BoxGeometry(1, 1, 1),
     new THREE.MeshBasicMaterial()
 )
 scene.add(cube)

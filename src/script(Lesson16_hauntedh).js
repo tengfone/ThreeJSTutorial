@@ -1,13 +1,13 @@
 import './style.css'
 import * as THREE from 'three'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import * as dat from 'dat.gui'
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
+import GUI from 'lil-gui'
 
 /**
  * Base
  */
 // Debug
-const gui = new dat.GUI()
+const gui = new GUI()
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
@@ -64,7 +64,7 @@ const house = new THREE.Group()
 scene.add(house)
 
 const walls = new THREE.Mesh(
-    new THREE.BoxBufferGeometry(4, 2.5, 4),
+    new THREE.BoxGeometry(4, 2.5, 4),
     new THREE.MeshStandardMaterial({
         map: bricksColorTexture,
         aoMap: bricksAmbientOcclusionTexture,
@@ -77,7 +77,7 @@ walls.position.y = 1.25
 house.add(walls)
 
 const roof = new THREE.Mesh(
-    new THREE.ConeBufferGeometry(3.5, 1, 4),
+    new THREE.ConeGeometry(3.5, 1, 4),
     new THREE.MeshStandardMaterial({ color: '#b35f45' })
 )
 roof.rotation.y = Math.PI * 0.25
@@ -85,7 +85,7 @@ roof.position.y = 2.5 + 0.5
 house.add(roof)
 
 const door = new THREE.Mesh(
-    new THREE.PlaneBufferGeometry(2.2, 2.2, 100, 100),
+    new THREE.PlaneGeometry(2.2, 2.2, 100, 100),
     new THREE.MeshStandardMaterial({
         map: doorColorTexture,
         transparent: true,
@@ -103,7 +103,7 @@ door.position.y = 1
 door.position.z = 2 + 0.01
 house.add(door)
 
-const bushGeometry = new THREE.SphereBufferGeometry(1, 16, 16)
+const bushGeometry = new THREE.SphereGeometry(1, 16, 16)
 const bushMaterial = new THREE.MeshStandardMaterial({ color: '#89c854' })
 
 const bush1 = new THREE.Mesh(bushGeometry, bushMaterial)
@@ -123,7 +123,7 @@ house.add(bush1, bush2, bush3)
 const graves = new THREE.Group()
 scene.add(graves)
 
-const graveGeometry = new THREE.BoxBufferGeometry(0.6, 0.8, 0.2)
+const graveGeometry = new THREE.BoxGeometry(0.6, 0.8, 0.2)
 const graveMaterial = new THREE.MeshStandardMaterial({ color: '#b2b6b1' })
 
 for (let i = 0; i < 50; i++) {
@@ -145,7 +145,7 @@ for (let i = 0; i < 50; i++) {
 
 // Floor
 const floor = new THREE.Mesh(
-    new THREE.PlaneBufferGeometry(20, 20),
+    new THREE.PlaneGeometry(20, 20),
     new THREE.MeshStandardMaterial({
         map: grassColorTexture,
         aoMap: grassAmbientOcclusionTexture,
